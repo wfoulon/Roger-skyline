@@ -1,0 +1,44 @@
+1. Connect to VM with previous login/password
+-> su
+
+2. Update Upgrade Install packages
+-> apt-get update && apt-get upgrade
+-> apt-get install sudo vim iptables-persistent fail2ban sendmail apache2
+(save the actual rules of IPV4 and IPV6)
+-> adduser [Name]
+-> adduser [Name] sudo
+
+3. Modify SSH parameters
+-> vim /etc/ssh/sshd_config
+    -> Port 2222
+    -> (Uncomment) PasswordAuthentification Yes
+    -> (Uncomment) PermitRootLogin prohibit-password (replace) No
+    -> (Uncomment) PubkeyAuthentication Yes
+
+4. New network interface (link between host and machine)
+-> vim /etc/network/interfaces
+    -> iface enp0s3 inet dhcp (change dhcp -> static)
+    -> add:
+        -> netmask 255.255.255.252 
+        #address/broadcast/gateway need to be changed depending on cluster
+        -> address 10.11.222.222
+        -> broadcast 10.11.255.255
+        -> gateway 10.11.254.254
+    -> sudo service ssh restart 
+    -> sudo reboot
+
+5. On host (iterm2)
+-> ssh-keygen
+    -> cat ~/.ssh/id_rsa_pub (copy key)
+    -> Connection to machine:
+        -> ssh [USERNAME.VM]@[IP.VM] -p [PORT.SSH.VM] ssh wfoulon@10.11.222.222 -p 2222
+        -> enter password
+        -> sudo mkdir .ssh (~/)
+        -> sudo vim .ssh/authorized_keys 
+        -> copy key ssh .ssh/authorized_keys
+        -> sudo vim /etc/ssh/sshd_config -> "PasswordAuthentification yes to no"
+        -> sudo service ssh restart
+        -> exit
+        -> reconnect
+            -> no pwd connection with publickeys
+        ->VM location .ssh/known_hosts

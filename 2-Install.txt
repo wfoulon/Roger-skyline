@@ -1,0 +1,36 @@
+Install debian
+debian-9.8.0-amd64-netinst.iso
+
+—> Installation debian
+Langue: France
+Zone: France
+Keyboard: American 
+
+—> Admin
+Hostname: roger
+Domain: 42.fr
+Pwd root: root42
+
+—> Useraccount
+Fullname: wilfridfoulon
+Username: wfoulon
+Pwduser: root42
+
+—> Partition Disk:
+Type : Manual
+SCSI3 (0,0,0) (sda) - 8.6 GB ATA VBOX HARDDISK 
+1st partition : 4.5gb, primary, beggining, ext4, mounted on /
+2nd partition : 1gb, primary, beggining, swap
+3rd partition : rest, primary, ext4, mounted on /home
+
+-> Package manager
+Country : France
+Mirror : ftp.fr.debian.org
+
+-> Config
+HTTP proxy : no
+Software selection : Select [SSH server] [Standard system utilities] [server web]
+Instal the GRUB boot loader : yes
+
+
+DONE

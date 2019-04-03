@@ -1,0 +1,2 @@
+-> Iso Debian
+debian-9.8.0-amd64-netinst
