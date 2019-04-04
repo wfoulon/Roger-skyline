@@ -1,0 +1,7 @@
+Try using command :
+perl slowloris.pl -dns [STATIC IP VM] -port [SSH PORT VM] (port SSH)
+perl slowloris.pl -dns [STATIC IP VM] -port 80 (Port HTTP)
+perl slowloris.pl -dns [STATIC IP VM] -port 443 (Port HTTPS)
+perl slowloris.pl -dns [STATIC IP VM] -port 25 (Port SMTP) (open only for email)
+
+Slowloris should not be able to send any packets and IP should be banned from VM.

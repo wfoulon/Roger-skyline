@@ -27,18 +27,22 @@
     -> sudo service ssh restart 
     -> sudo reboot
 
-5. On host (iterm2)
+5. On host (Iterm2)
 -> ssh-keygen
-    -> cat ~/.ssh/id_rsa_pub (copy key)
+-> cat ~/.ssh/id_rsa_pub (copy key)
     -> Connection to machine:
-        -> ssh [USERNAME.VM]@[IP.VM] -p [PORT.SSH.VM] ssh wfoulon@10.11.222.222 -p 2222
-        -> enter password
-        -> sudo mkdir .ssh (~/)
-        -> sudo vim .ssh/authorized_keys 
-        -> copy key ssh .ssh/authorized_keys
-        -> sudo vim /etc/ssh/sshd_config -> "PasswordAuthentification yes to no"
-        -> sudo service ssh restart
-        -> exit
-        -> reconnect
-            -> no pwd connection with publickeys
-        ->VM location .ssh/known_hosts
+        -> (via Iterm2)
+            -> ssh [USERNAME.VM]@[IP.VM] -p [PORT.SSH.VM] ssh wfoulon@10.11.222.222 -p 2222
+            -> enter password
+            -> sudo mkdir .ssh (~/)
+            -> sudo vim .ssh/authorized_keys 
+            -> copy key ssh .ssh/authorized_keys
+        -> (on VM)
+            -> sudo vim /etc/ssh/sshd_config -> "PasswordAuthentification yes to no"
+            -> sudo service ssh restart
+        -> (via Iterm2)
+            -> exit
+            -> reconnect:
+                -> no password
+                -> connection with publickey
+        -> VM location .ssh/known_hosts
