@@ -18,4 +18,44 @@ IPTABLES CONFIG
         -> sudo sh /etc/network/if-pre-up.d/bestiptables
     -> reconnect
 
-FAIL2BAN CONFIG
+FAIL2BAN CONFIG (fail2ban blocks the IP addresses of connections that perform unsuccessful authentication)
+
+-> logtarget = /var/log/fail2ban.log
+-> socket = /var/fail2ban/fail2ban.sock
+-> /etc/fail2ban/jail.conf: contain all monitoring services
+-> create log_paths if needed
+-> sudo vim /etc/fail2ban/jail.local
+-> Creation of a jail where all the banned IP will be display
+-> complete file with your own rules (basics one to start)
+    -> sudo systemctl restart fail2ban.service
+    -> sudo reboot
+    -> sudo iptables -L
+    -> sudo iptables -S
+
+POSTSENTRY CONFIG (postentry blocks IP addresses that seek to identify open ports)
+https://fr-wiki.ikoula.com/fr/Se_prot%C3%A9ger_contre_le_scan_de_ports_avec_portsentry
+
+-> sudo apt-get update && apt-get install portsentry
+-> First stop the service
+    -> sudo /etc/init.d/portsentry stop
+-> sudo vim /etc/portsentry/portsentry.ignore.static
+    -> Put host in here you never want to block
+    -> <IP Address>/<Netmask>
+    -> 10.12.222.222 255.255.255.0 -> 10.12.222.222/24
+    -> sudo vim /etc/default/portsentry
+        -> TCP_MODE="atcp"
+        -> UDP_MODE="audp"
+    -> sudo vim /etc/portsentry/portsentry.conf
+        -> BLOCK_UDP="1"
+        -> BLOCK_TCP="1"
+    -> how to block by iptables
+        -> sudo vim/etc/portsentry/portsentry.conf
+        -> Comment all the KILL_ROUTE except:
+            -> KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP"
+            -> cat /etc/portsentry/portsentry.conf | grep KILL_ROUTE | grep -v "#" (to verify)
+        -> relaunch
+            -> sudo /etc/init.d/portsentry start
+            -> tchek with nmap to test ports can 
+            -> sudo cat /var/log/syslog (to see if the IP address has been banned)
+            -> unlock bannishment:
+                -> sudo sh resetiptables.sh

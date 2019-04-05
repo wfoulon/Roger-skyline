@@ -20,8 +20,8 @@
     -> iface enp0s3 inet dhcp (change dhcp -> static)
     -> add:
         -> netmask 255.255.255.252 
-        #address/broadcast/gateway need to be changed depending on cluster
-        -> address 10.11.222.222
+        -> address/broadcast/gateway need to be changed depending on cluster(10.11 cluster1 / 10.12 cluster2 / 10.13 cluster3)
+        -> address 10.11.222.222 
         -> broadcast 10.11.255.255
         -> gateway 10.11.254.254
     -> sudo service ssh restart 
