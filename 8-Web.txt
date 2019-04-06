@@ -1,0 +1,16 @@
+Generate new SSL key
+
+-> sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/rogerxxx.com.key -out /etc/ssl/certs/rogerxxx.com.crt
+-> sudo vim /etc/apache2/sites-available/default-ssl.conf
+-> add 2 lines:
+    -> SSLCertificateFile /etc/ssl/certs/rogerxxx.com.crt
+    -> SSLCertificateKeyFile /etc/ssl/private/rogerxxx.com.key 
+-> sudo apachectl configtest
+-> sudo a2enmod ssl
+-> sudo a2ensite default-ssl
+-> sudo systemctl restart apache2.service
+-> sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/001-default.conf
+-> sudo vim /etc/apache2/sites-available/001-default.conf
+-> sudo a2dissite 000-default.conf
+-> sudo a2ensite 001-default.conf
+-> sudo systemctl reload apache2
