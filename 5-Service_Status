@@ -1,5 +1,0 @@
-SERVICE CONFIG
-
--> sudo service --status-all
--> tchek the service you don't need
--> sudo service [NAME] start/stop/restart/reload/status
