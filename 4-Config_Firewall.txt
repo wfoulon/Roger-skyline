@@ -31,6 +31,9 @@ FAIL2BAN CONFIG (fail2ban blocks the IP addresses of connections that perform un
     -> sudo reboot
     -> sudo iptables -L
     -> sudo iptables -S
+-> to restart fail2ban:
+    -> delete the file /etc/fail2ban/jail.local
+    -> sudo service fail2ban restart
 
 POSTSENTRY CONFIG (postentry blocks IP addresses that seek to identify open ports)
 https://fr-wiki.ikoula.com/fr/Se_prot%C3%A9ger_contre_le_scan_de_ports_avec_portsentry

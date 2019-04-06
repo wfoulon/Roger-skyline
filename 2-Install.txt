@@ -1,4 +1,4 @@
-Install debian
+DEBIAN INSTALL
 debian-9.8.0-amd64-netinst.iso
 
 —> Installation debian
@@ -31,6 +31,3 @@ Mirror : ftp.fr.debian.org
 HTTP proxy : no
 Software selection : Select [SSH server] [Standard system utilities] [server web]
 Instal the GRUB boot loader : yes
-
-
-DONE

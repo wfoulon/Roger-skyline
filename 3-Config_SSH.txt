@@ -18,7 +18,7 @@
 4. New network interface (link between host and machine)
 -> vim /etc/network/interfaces
     -> iface enp0s3 inet dhcp (change dhcp -> static)
-    -> add:
+    -> Add:
         -> netmask 255.255.255.252 
         -> address/broadcast/gateway need to be changed depending on cluster(10.11 cluster1 / 10.12 cluster2 / 10.13 cluster3)
         -> address 10.11.222.222 
@@ -33,16 +33,16 @@
     -> Connection to machine:
         -> (via Iterm2)
             -> ssh [USERNAME.VM]@[IP.VM] -p [PORT.SSH.VM] ssh wfoulon@10.11.222.222 -p 2222
-            -> enter password
+            -> Enter password
             -> sudo mkdir .ssh (~/)
             -> sudo vim .ssh/authorized_keys 
-            -> copy key ssh .ssh/authorized_keys
+            -> Copy key ssh .ssh/authorized_keys
         -> (on VM)
             -> sudo vim /etc/ssh/sshd_config -> "PasswordAuthentification yes to no"
             -> sudo service ssh restart
         -> (via Iterm2)
-            -> exit
-            -> reconnect:
-                -> no password
-                -> connection with publickey
+            -> Exit
+            -> Reconnect:
+                -> No password
+                -> Connection with publickey
         -> VM location .ssh/known_hosts

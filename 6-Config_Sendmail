@@ -1,0 +1,11 @@
+CONFIG SENDMAIL
+
+-> sudo sendmailconfig
+-> Configure sendmail with the existing /etc/mail/sendmail.conf? [Y] Y
+-> Configure sendmail with the existing /etc/mail/sendmail.mc? [Y] Y
+-> Reload the running sendmail now with the new configuration? [Y] Y
+-> sudo service apache2 restart
+-> Create a file mail.txt with content
+-> To Test:
+    -> sudo sendmail xxxx@xxx.com < mail.txt
+    -> Tchek your mailbox magic has happened
