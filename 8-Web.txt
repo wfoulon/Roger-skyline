@@ -14,3 +14,9 @@ Generate new SSL key
 -> sudo a2dissite 000-default.conf
 -> sudo a2ensite 001-default.conf
 -> sudo systemctl reload apache2
+
+In Browser
+
+-> https://[IP ADDRESS]/
+    -> Proceed to unsecure
+    -> index.html is display
