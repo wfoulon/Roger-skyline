@@ -8,4 +8,4 @@ exit 0
 # To execute the cron one time a week at 4.00 and at every reboot
 # sudo crontab -u root -e
 # copy this line in the crontab file "0 4 * * 1 root /absolute/path/to/the/file >> /var/log/update_script.log"
-# copy this line in the crontab file "@reboot root /absolute/path/to/the/file >> /var/log/update_script.log" 
+# copy this line in the crontab file "@reboot root /absolute/path/to/the/file >> /var/log/update_script.log"
